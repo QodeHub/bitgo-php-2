@@ -101,46 +101,6 @@ class UpdateWallet extends Api
     }
 
     /**
-     * @return mixed
-     */
-    public function getParametersRequired()
-    {
-        return $this->parametersRequired;
-    }
-
-    /**
-     * @param mixed $parametersRequired
-     *
-     * @return self
-     */
-    public function setParametersRequired($parametersRequired)
-    {
-        $this->parametersRequired = $parametersRequired;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getParametersOptional()
-    {
-        return $this->parametersOptional;
-    }
-
-    /**
-     * @param mixed $parametersOptional
-     *
-     * @return self
-     */
-    public function setParametersOptional($parametersOptional)
-    {
-        $this->parametersOptional = $parametersOptional;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getLabel()

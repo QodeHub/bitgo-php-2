@@ -154,6 +154,17 @@ interface WalletInterface extends ApiInterface
     public function updateWallet($attributes = []);
 
     /**
+     * This function will place a magic call to the AddWebhook
+     * class, giving all available methods on for chaining.
+     *
+     * @param  array|null $attributes This will accept an
+     *                                array of arguements
+     *                                for configuration.
+     * @return AddWebhook
+     */
+    public function addWebhook($attributes = []);
+
+    /**
      * This function will place a magic call to the UpdateWallet
      * class, giving all available methods on for chaining.
      *

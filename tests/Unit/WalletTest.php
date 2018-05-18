@@ -17,6 +17,7 @@ use Qodehub\Bitgo\Bitgo;
 use Qodehub\Bitgo\Config;
 use Qodehub\Bitgo\Wallet;
 use Qodehub\Bitgo\Wallet\Addresses;
+use Qodehub\Bitgo\Wallet\AddWebhook;
 use Qodehub\Bitgo\Wallet\CreateAddress;
 use Qodehub\Bitgo\Wallet\CreateWallet;
 use Qodehub\Bitgo\Wallet\SendCoins;
@@ -124,6 +125,12 @@ class WalletTest extends TestCase
     public function the_create_method_returns_a_wallet_instance()
     {
         $this->assertInstanceOf(CreateWallet::class, Wallet::{$this->coin}()->Create());
+    }
+
+    /** @test */
+    public function the_add_webhook_method_returns_a_wallet_instance()
+    {
+        $this->assertInstanceOf(AddWebhook::class, Wallet::{$this->coin}()->addWebhook());
     }
 
     /** @test */

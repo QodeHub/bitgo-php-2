@@ -93,9 +93,11 @@ class Handler
             $class = 'Bitgo';
         }
 
-        if ((!$message) && is_array($rawOutput) && array_key_exists('message', $rawOutput)) {
-            $message = $rawOutput['message'];
-        }
+        // TODO: Refactor this code to allow tests.
+        $message = $message
+        ?: is_array($rawOutput)
+        && array_key_exists('message', $rawOutput) ? $rawOutput['message']
+        : null;
 
         $class = '\\Qodehub\\Bitgo\\Exception\\' . $class . 'Exception';
         $instance = new $class($message, $statusCode);
