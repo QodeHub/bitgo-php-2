@@ -55,6 +55,19 @@ class AddWebhook extends Api
     protected $parametersOptional = [
         'numConfirmations',
     ];
+
+    /**
+     * Allowed webhook types
+     * @var array
+     */
+    protected $webhookTypes = [
+        'block',
+        'transfer',
+        'pendingapproval',
+        'wallet_confirmation',
+        'address_confirmation',
+    ];
+
     /**
      * A valid URL to fire the webhook to.
      * @var string
@@ -146,14 +159,17 @@ class AddWebhook extends Api
      */
     public function setType($type)
     {
-        if (in_array($type, ['transfer', 'pendingaapproval'])) {
+
+        if (in_array($type, $this->webhookTypes)) {
 
             $this->type = $type;
 
             return $this;
         }
 
-        throw new InvalidRequestException('The type field can only be either \'transfer\' or \'pendingaapproval\': ' . $type);
+        throw new InvalidRequestException(
+            'The type field can only be (' . implode(', ', $this->webhookTypes) . ') :' . $type
+        );
     }
 
     /**
