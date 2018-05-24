@@ -65,8 +65,8 @@ If you discover any security related issues, please email iamovac@gmail.com inst
 #TODO - In progress
 - Flesh out documentation (100% coverage)
 
-#TODO - TODO - TODO
 ```
+#TODO - TODO - TODO
 - Automate CI Testing
 - Automate Documentation Deployment.
 - Pass scrutinizers tests.
