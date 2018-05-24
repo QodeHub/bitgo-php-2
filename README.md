@@ -53,23 +53,23 @@ If you discover any security related issues, please email iamovac@gmail.com inst
 - Study the BitGo API in depth. ✅
 - -Looks like this will walk with me through out the development phase.- 📝 ✅
 - Code implementation for the required use cases based on src. 🎬 ✅
+- Ask management to move Codebase to Github for CASE tools and build process to work
 - Currently in action 🎉 ✅
 - Conventional programmer's big-bang (Initial commit) ✅
+- Pass code quality check (at least 85%)
+- Pass Dependency and version management tests (at least 85%)
+- Pass Integration tests (at least 85%)
+- Write Tests for all methods (at least 85% Coverage) ✅
 
 
 #TODO - In progress
-- Write Tests for all methods (at least 85% Coverage) ✅
 - Flesh out documentation (100% coverage)
-- Ask management to move Codebase to Github for CASE tools and build process to work
 
 #TODO - TODO - TODO
 ```
 - Automate CI Testing
 - Automate Documentation Deployment.
 - Pass scrutinizers tests.
-- Pass code quality check (at least 85%)
-- Pass Dependency and version management tests (at least 85%)
-- Pass Integration tests (at least 85%)
 - Pass human documentation readability test. (This one hard oh! people still don't understand Laravel)
 ```
 
