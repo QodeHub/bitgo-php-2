@@ -112,9 +112,9 @@ class AddWebhookTest extends TestCase
 
         $this->assertEquals($AddWebhookInstance->getType(), $this->type);
 
-        $AddWebhookInstance->type('pendingaapproval');
+        $AddWebhookInstance->type('pendingapproval');
 
-        $this->assertEquals($AddWebhookInstance->getType(), 'pendingaapproval');
+        $this->assertEquals($AddWebhookInstance->getType(), 'pendingapproval');
 
         return $AddWebhookInstance->type($this->type);
     }

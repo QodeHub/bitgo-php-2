@@ -191,7 +191,7 @@ class Bitgo implements ConfigInterface
          *
          * I hope you get the basic idea! ;-)
          */
-        if (in_array($method, ['wallet', 'createWallet'])) {
+        if (in_array($method, ['wallet', 'createWallet', 'utilities'])) {
 
             /**
              * Append a capitalized name of the method
@@ -214,9 +214,12 @@ class Bitgo implements ConfigInterface
                 $executionInstace = new $class(...$parameters);
 
                 /**
-                 * Inject the coin type
+                 * Inject the coin type if the instance
+                 * has a cointype method
                  */
-                $executionInstace->coinType($this->getCoinType());
+                if (method_exists($executionInstace, 'coinType')) {
+                    $executionInstace->coinType($this->getCoinType());
+                }
 
                 /**
                  * Inject the Api configuration if
