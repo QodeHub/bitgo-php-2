@@ -14,6 +14,7 @@
 namespace Qodehub\Bitgo;
 
 use Qodehub\Bitgo\Api\Api;
+use Qodehub\Bitgo\Coin;
 use Qodehub\Bitgo\Config;
 
 /**
@@ -27,6 +28,8 @@ use Qodehub\Bitgo\Config;
  */
 class Utilities extends Api
 {
+    use Coin;
+
     /**
      * This is a configuration instance that will
      * be used by any of the utility class that
@@ -66,6 +69,14 @@ class Utilities extends Api
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function keychains($attributes = [])
+    {
+        return $this->getUtilityInstance('Keychains', $attributes);
+    }
+
+    /**
      * Dynamically handle calls to sub-classes and pass in the wallet instance ID.
      *
      * @param   string $method
@@ -92,6 +103,14 @@ class Utilities extends Api
          * methods lists.
          */
         $executionInstace = new $class($parameters);
+
+        /**
+         * Inject the coin type if the instance
+         * has a cointype method
+         */
+        if (method_exists($executionInstace, 'coinType')) {
+            $executionInstace->coinType($this->getCoinType());
+        }
 
         /**
          * Inject the Api configuration if
