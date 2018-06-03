@@ -77,6 +77,14 @@ class Utilities extends Api
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function createKeychain($attributes = [])
+    {
+        return $this->getUtilityInstance('CreateKeychain', $attributes);
+    }
+
+    /**
      * Dynamically handle calls to sub-classes and pass in the wallet instance ID.
      *
      * @param   string $method
