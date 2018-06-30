@@ -175,9 +175,25 @@ class Wallet extends Api implements WalletInterface
     /**
      * {@inheritdoc}
      */
+    public function webhooks($attributes = [])
+    {
+        return $this->getWalletInstance('Webhooks', $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function addWebhook($attributes = [])
     {
         return $this->getWalletInstance('AddWebhook', $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeWebhook($attributes = [])
+    {
+        return $this->getWalletInstance('RemoveWebhook', $attributes);
     }
 
     /**
