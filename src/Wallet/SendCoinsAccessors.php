@@ -94,6 +94,10 @@ trait SendCoinsAccessors
      */
     public function getAmount()
     {
+        if (preg_match('/eth/', $this->getCoinType())) {
+            return (string) $this->amount;
+        }
+
         return $this->amount;
     }
 
