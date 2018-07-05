@@ -35,6 +35,7 @@ use Qodehub\Bitgo\Wallet\WalletTrait;
  * @example Bitgo::btc($config)->wallet('waletId')->get();
  * @example Bitgo::btc($config)->wallet('waletId')->skip(10)->limit(10)->minConfirms(10)->compact()->get();
  *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.LongVariable)
  */
 class Wallet extends Api implements WalletInterface
@@ -202,6 +203,22 @@ class Wallet extends Api implements WalletInterface
     public function update($attributes = [])
     {
         return $this->getWalletInstance('UpdateWallet', $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildTransaction($attributes = [])
+    {
+        return $this->getWalletInstance('BuildTransaction', $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function signTransaction($attributes = [])
+    {
+        return $this->getWalletInstance('SignTransaction', $attributes);
     }
 
     /**

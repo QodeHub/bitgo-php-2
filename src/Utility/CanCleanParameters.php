@@ -38,6 +38,13 @@ trait CanCleanParameters
 
         foreach ($this->parametersRequired as $key) {
             if (is_null($this->accessPropertyByKey($key))) {
+                if (array_key_exists($key, $this->parametersSwapable)) {
+                    is_null($this->accessPropertyByKey($swapable = $this->parametersSwapable[$key]))
+                    && $keys .= $swapable . ' or ' . $key . ', ';
+
+                    continue;
+                }
+
                 $keys .= $key . ', ';
             }
         }

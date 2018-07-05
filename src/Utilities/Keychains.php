@@ -52,6 +52,8 @@ class Keychains extends Api
      * case of getting a single one.
      *
      * @var string
+     *
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     protected $id;
 
@@ -63,12 +65,10 @@ class Keychains extends Api
     public function __construct($data = null)
     {
         if (is_string($data)) {
-
             $this->setId($data);
         }
 
         if (is_array($data)) {
-
             $this->massAssign($data);
         }
     }
@@ -78,6 +78,8 @@ class Keychains extends Api
      *
      * @param  string $id Key IDs
      * @return self
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
      */
     public function id($id)
     {

@@ -72,6 +72,38 @@ class Transactions extends Api
     }
 
     /**
+     * Build a new transaction
+     *
+     * @param  any ...$args this will pass all arguments to the
+     *                      BuildTransaction constructor and make
+     *                      a new instance.
+     * @return \Qodehub\Bitgo\Wallet\BuildTransaction A new BuildTransaction instance
+     */
+    public function build(...$args)
+    {
+        return (new BuildTransaction(...$args))
+            ->coinType($this->coinType)
+            ->wallet($this->walletId)
+            ->injectConfig($this->config);
+    }
+
+    /**
+     * Sign a new transaction
+     *
+     * @param  any ...$args this will pass all arguments to the
+     *                      SignTransaction constructor and make
+     *                      a new instance.
+     * @return \Qodehub\Bitgo\Wallet\BuildTransaction A new SignTransaction instance
+     */
+    public function sign(...$args)
+    {
+        return (new SignTransaction(...$args))
+            ->coinType($this->coinType)
+            ->wallet($this->walletId)
+            ->injectConfig($this->config);
+    }
+
+    /**
      * The ID of a single transaction. This will need to be set
      * in order to get a single transaction.
      *

@@ -22,6 +22,33 @@ namespace Qodehub\Bitgo\Wallet;
  */
 trait SendCoinsAccessors
 {
+
+    /**
+     * This is the address that the coins will be sent
+     * to. This method can be used interchangably with
+     * receiver, to and address.
+     *
+     * @param  string $address this will be the receiving address
+     * @return self
+     */
+    public function address(string $address)
+    {
+        return $this->setAddress($address);
+    }
+    /**
+     * Use this chain method to define the amount of coins
+     * that will be sent.
+     *
+     * @param  integer $amount This will be the amount will be sent.
+     *                         In BTC for example this will be the
+     *                         amount in satoshi.
+     * @return self
+     */
+    public function amount($amount)
+    {
+        return $this->setAmount($amount);
+    }
+
     /**
      * @return integer
      */

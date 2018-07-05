@@ -58,6 +58,7 @@ class AddWebhook extends Api
 
     /**
      * Allowed webhook types
+     *
      * @var array
      */
     protected $webhookTypes = [
@@ -70,11 +71,13 @@ class AddWebhook extends Api
 
     /**
      * A valid URL to fire the webhook to.
+     *
      * @var string
      */
     protected $url;
     /**
      * Type of event to listen to (can be transfer or pendingaapproval).
+     *
      * @var string
      */
     protected $type;
@@ -82,6 +85,7 @@ class AddWebhook extends Api
      * Number of confirmations before triggering the webhook. If 0 or
      * unspecified, requests will be sent to the callback endpoint
      * when the transfer is first seen and when it is confirmed.
+     *
      * @var number
      */
     protected $numConfirmations;
@@ -98,9 +102,10 @@ class AddWebhook extends Api
 
     /**
      * A helper method for setting the callback type
+     *
      * @param  string $type This should be either transfer or approvalrequired
      * @return self
-     * @throws  InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function type($type)
     {
@@ -109,9 +114,10 @@ class AddWebhook extends Api
 
     /**
      * A helper method for setting the callback URL
+     *
      * @param  string $type This should be a valid callback url
      * @return self
-     * @throws  InvalidRequestException
+     * @throws InvalidRequestException
      */
     public function url($type)
     {

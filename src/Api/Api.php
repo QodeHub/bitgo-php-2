@@ -54,6 +54,25 @@ abstract class Api implements ApiInterface
     protected $response;
 
     /**
+     * Required parameters.
+     *
+     * @var array
+     */
+    protected $parametersRequired = [];
+    /**
+     * Optional Parameters.
+     *
+     * @var array
+     */
+    protected $parametersOptional = [];
+    /**
+     * Swapable parameters.
+     *
+     * @var array
+     */
+    protected $parametersSwapable = [];
+
+    /**
      * Constructor.
      *
      * @param  \Qodehub\Bitgo\ConfigInterface $config

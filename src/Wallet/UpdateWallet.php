@@ -57,6 +57,7 @@ class UpdateWallet extends Api
 
     /**
      * A Human-readable name for the wallet
+     *
      * @var string
      */
     protected $label;
@@ -69,11 +70,13 @@ class UpdateWallet extends Api
     protected $disableTransactionNotifications;
     /**
      * Change number of required approvals
+     *
      * @var integer
      */
     protected $approvalsRequired;
     /**
      * Change threshold for erc20 forwarder (only coin teth)
+     *
      * @var Object
      */
     protected $tokenFlushThresholds;

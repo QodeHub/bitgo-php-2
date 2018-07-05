@@ -70,7 +70,8 @@ class Webhooks extends Api
 
     /**
      * A helper method for setting the allTokens type
-     * @param  bool   $allTokens True or false
+     *
+     * @param  bool $allTokens True or false
      * @return self
      */
     public function allTokens(bool $allTokens)

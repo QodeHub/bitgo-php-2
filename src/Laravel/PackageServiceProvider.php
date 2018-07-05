@@ -43,9 +43,11 @@ class PackageServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($config, 'qodehub.bitgo');
 
-        $this->publishes([
+        $this->publishes(
+            [
             $config => config_path('qodehub.bitgo.php'),
-        ], 'config');
+            ], 'config'
+        );
     }
 
     /**
@@ -57,16 +59,18 @@ class PackageServiceProvider extends ServiceProvider
     {
         $this->prepareResources();
 
-        $this->app->bind('qodehub.bitgo', function () {
+        $this->app->bind(
+            'qodehub.bitgo', function () {
 
-            return new Bitgo(
-                new Config(
-                    (string) config('qodehub.bitgo.token'),
-                    (boolean) config('qodehub.bitgo.secure'),
-                    (string) config('qodehub.bitgo.host'),
-                    (integer) config('qodehub.bitgo.port')
-                )
-            );
-        });
+                return new Bitgo(
+                    new Config(
+                        (string) config('qodehub.bitgo.token'),
+                        (boolean) config('qodehub.bitgo.secure'),
+                        (string) config('qodehub.bitgo.host'),
+                        (integer) config('qodehub.bitgo.port')
+                    )
+                );
+            }
+        );
     }
 }

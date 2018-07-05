@@ -176,7 +176,7 @@ interface WalletInterface extends ApiInterface
     public function addWebhook($attributes = []);
 
     /**
-     * This function will place a magic call to the removeWebhook
+     * This function will place a magic call to the RemoveWebhook
      * class, giving all available methods on for chaining.
      *
      * @param  array|null $attributes This will accept an
@@ -185,6 +185,28 @@ interface WalletInterface extends ApiInterface
      * @return RemoveWebhook
      */
     public function removeWebhook($attributes = []);
+
+    /**
+     * This function will place a magic call to the BuildTransaction
+     * class, giving all available methods on for chaining.
+     *
+     * @param  array|null $attributes This will accept an
+     *                                array of arguements
+     *                                for configuration.
+     * @return BuildTransaction
+     */
+    public function buildTransaction($attributes = []);
+
+    /**
+     * This function will place a magic call to the SignTransaction
+     * class, giving all available methods on for chaining.
+     *
+     * @param  array|null $attributes This will accept an
+     *                                array of arguements
+     *                                for configuration.
+     * @return SignTransaction
+     */
+    public function signTransaction($attributes = []);
 
     /**
      * This function will place a magic call to the UpdateWallet
