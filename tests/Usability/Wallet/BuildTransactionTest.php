@@ -86,6 +86,7 @@ class BuildTransactionTest extends TestCase
     protected $lastLedgerSequence = 1;
     protected $ledgerSequenceDelta = 2;
     protected $recipients;
+    protected $unspents = ['some' => 'unspents'];
 
     /**
      * Setup the test environment viriables
@@ -129,9 +130,11 @@ class BuildTransactionTest extends TestCase
 
             ->setFeeRate($this->feeRate)
             ->setMinValue($this->minValue)
+            ->setUnspents($this->unspents)
             ->setMaxValue($this->maxValue)
             ->setGasPrice($this->gasPrice)
             ->setNumBlocks($this->numBlocks)
+            ->setChangeAddress($this->address)
             ->setMinConfirms($this->minConfirms)
             ->setNoSplitChange($this->noSplitChange)
             ->setLastLedgerSequence($this->lastLedgerSequence)
@@ -167,8 +170,10 @@ class BuildTransactionTest extends TestCase
             ->setFeeRate($this->feeRate)
             ->setMinValue($this->minValue)
             ->setMaxValue($this->maxValue)
+            ->setUnspents($this->unspents)
             ->setGasPrice($this->gasPrice)
             ->setNumBlocks($this->numBlocks)
+            ->setChangeAddress($this->address)
             ->setMinConfirms($this->minConfirms)
             ->setNoSplitChange($this->noSplitChange)
             ->setLastLedgerSequence($this->lastLedgerSequence)
@@ -204,8 +209,10 @@ class BuildTransactionTest extends TestCase
             ->setFeeRate($this->feeRate)
             ->setMinValue($this->minValue)
             ->setMaxValue($this->maxValue)
+            ->setUnspents($this->unspents)
             ->setGasPrice($this->gasPrice)
             ->setNumBlocks($this->numBlocks)
+            ->setChangeAddress($this->address)
             ->setMinConfirms($this->minConfirms)
             ->setNoSplitChange($this->noSplitChange)
             ->setLastLedgerSequence($this->lastLedgerSequence)
@@ -242,8 +249,10 @@ class BuildTransactionTest extends TestCase
             ->setFeeRate($this->feeRate)
             ->setMinValue($this->minValue)
             ->setMaxValue($this->maxValue)
+            ->setUnspents($this->unspents)
             ->setGasPrice($this->gasPrice)
             ->setNumBlocks($this->numBlocks)
+            ->setChangeAddress($this->address)
             ->setMinConfirms($this->minConfirms)
             ->setNoSplitChange($this->noSplitChange)
             ->setLastLedgerSequence($this->lastLedgerSequence)
@@ -280,8 +289,10 @@ class BuildTransactionTest extends TestCase
             ->setFeeRate($this->feeRate)
             ->setMinValue($this->minValue)
             ->setMaxValue($this->maxValue)
+            ->setUnspents($this->unspents)
             ->setGasPrice($this->gasPrice)
             ->setNumBlocks($this->numBlocks)
+            ->setChangeAddress($this->address)
             ->setMinConfirms($this->minConfirms)
             ->setNoSplitChange($this->noSplitChange)
             ->setLastLedgerSequence($this->lastLedgerSequence)
@@ -322,8 +333,10 @@ class BuildTransactionTest extends TestCase
             'feeRate' => $this->feeRate,
             'minValue' => $this->minValue,
             'maxValue' => $this->maxValue,
+            'unspents' => $this->unspents,
             'gasPrice' => $this->gasPrice,
             'numBlocks' => $this->numBlocks,
+            'changeAddress' => $this->address,
             'minConfirms' => $this->minConfirms,
             'noSplitChange' => $this->noSplitChange,
             'targetWalletUnspents' => $this->targetWalletUnspents,
@@ -441,9 +454,21 @@ class BuildTransactionTest extends TestCase
         );
 
         $this->assertEquals(
+            $this->unspents,
+            $instance->getUnspents(),
+            'unspents is Optional but should match the unspents array for this test'
+        );
+
+        $this->assertEquals(
             $this->enforceMinConfirmsForChange,
             $instance->getEnforceMinConfirmsForChange(),
             'enforceMinConfirmsForChange is Optional but should match ' . $this->enforceMinConfirmsForChange . ' for this test'
+        );
+
+        $this->assertEquals(
+            $this->address,
+            $instance->getChangeAddress(),
+            'changeAddress is Optional but should match ' . $this->address . ' for this test'
         );
 
         $instance->addRecipient('another-address-added', '1000');

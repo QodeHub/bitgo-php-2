@@ -39,13 +39,42 @@ trait CanCleanParameters
         foreach ($this->parametersRequired as $key) {
             if (is_null($this->accessPropertyByKey($key))) {
                 if (array_key_exists($key, $this->parametersSwapable)) {
-                    is_null($this->accessPropertyByKey($swapable = $this->parametersSwapable[$key]))
-                    && $keys .= $swapable . ' or ' . $key . ', ';
+                    // Basically, here, we'd isolated and test each of the swappable arrays
+                    // then combine all of the values and check if it is empty by casting
+                    // imploding all of them with 0 and then cast it to an integer so
+                    // that if it is set, it will also return a 0.
+                    //
+                    // This way, if even a single value from the set of swappable group is not set,
+                    // it will return a truthy value and the test result will fail.
 
-                    continue;
+                    $testFailed = !(bool) (int) implode(0, array_map(
+
+                        function ($values) use ($key) {
+                            return (int) implode(0, array_map(function ($swap) {
+
+                                return (int) !(bool) $this->accessPropertyByKey($swap);
+                            }, $values));
+                        },
+                        $this->parametersSwapable[$key]
+                    ));
+
+                    // When the test fails, we will give a comphrehensive report on how
+                    // to pass the test along with the set of possible swaps.
+
+                    if ($testFailed) {
+                        $swaps = array_map(function ($swap) {
+                            return implode(' & ', $swap);
+                        }, $this->parametersSwapable[$key]);
+
+                        $keys .= '[' . $key . ' or ' . implode(' or ', $swaps) . '], ';
+                    }
                 }
 
-                $keys .= $key . ', ';
+                // You get the basic idea ;)
+
+                if (!array_key_exists($key, $this->parametersSwapable)) {
+                    $keys .= $key . ', ';
+                }
             }
         }
 
@@ -54,6 +83,8 @@ trait CanCleanParameters
                 str_replace(', .', '', 'The following parameters are required: ' . $keys . '.')
             );
         }
+
+        return true;
     }
     /**
      * This method picks up all the defined properties the
