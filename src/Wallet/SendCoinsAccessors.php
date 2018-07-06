@@ -94,7 +94,7 @@ trait SendCoinsAccessors
      */
     public function getAmount()
     {
-        return (string) $this->amount;
+        return ((string) $this->amount) ?: null;
     }
 
     /**
