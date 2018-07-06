@@ -74,7 +74,7 @@ class SendCoinsTest extends TestCase
      *
      * @var string
      */
-    protected $amount = 1.742;
+    protected $amount = 1742;
 
     /**
      * A comment for this transaction
