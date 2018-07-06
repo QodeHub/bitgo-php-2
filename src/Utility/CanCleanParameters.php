@@ -48,7 +48,7 @@ trait CanCleanParameters
 
                     $testFailed = array_map(
 
-                        function ($values) use ($key) {
+                        function ($values) {
                             return (int) (boolean) array_sum(array_map(function ($swap) {
 
                                 return (int) is_null($this->accessPropertyByKey($swap));
