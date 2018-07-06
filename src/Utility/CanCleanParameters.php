@@ -40,28 +40,29 @@ trait CanCleanParameters
             if (is_null($this->accessPropertyByKey($key))) {
                 if (array_key_exists($key, $this->parametersSwapable)) {
                     // Basically, here, we'd isolated and test each of the swappable arrays
-                    // then combine all of the values and check if it is empty by casting
-                    // imploding all of them with 0 and then cast it to an integer so
-                    // that if it is set, it will also return a 0.
+                    // then return a count for each faild test in each swapable group.
                     //
                     // This way, if even a single value from the set of swappable group is not set,
-                    // it will return a truthy value and the test result will fail.
+                    // it will return a count for the number of failed result for a group and
+                    // then each group will also count as a filed test.
 
-                    $testFailed = !(bool) (int) implode(0, array_map(
+                    $testFailed = array_map(
 
                         function ($values) use ($key) {
-                            return (int) implode(0, array_map(function ($swap) {
+                            return (int) (boolean) array_sum(array_map(function ($swap) {
 
-                                return (int) !(bool) $this->accessPropertyByKey($swap);
+                                return (int) is_null($this->accessPropertyByKey($swap));
                             }, $values));
                         },
                         $this->parametersSwapable[$key]
-                    ));
+                    );
 
-                    // When the test fails, we will give a comphrehensive report on how
-                    // to pass the test along with the set of possible swaps.
+                    // Here, we check the number of failed groups and if it is the same as the
+                    // number of optional groups, then it means that no single group passed
+                    // the test. For this reason,  we will give a comphrehensive report
+                    // on how o pass the test along with the set of possible swaps.
 
-                    if ($testFailed) {
+                    if (array_sum($testFailed) == count($this->parametersSwapable[$key])) {
                         $swaps = array_map(function ($swap) {
                             return implode(' & ', $swap);
                         }, $this->parametersSwapable[$key]);
