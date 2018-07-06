@@ -222,6 +222,14 @@ class Wallet extends Api implements WalletInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function sendTransaction($attributes = [])
+    {
+        return $this->getWalletInstance('SendTransaction', $attributes);
+    }
+
+    /**
      * This will set the ID of the wallet that you want to get.
      * for a single wallet.
      *
