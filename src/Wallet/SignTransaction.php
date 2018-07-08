@@ -92,12 +92,14 @@ class SignTransaction extends SendCoins
 
     /**
      * alias for 'keychain’
+     *
      * @var Object
      */
     protected $key;
 
     /**
      * The seed used to derive the signing key
+     *
      * @var string
      */
     protected $coldDerivationSeed;

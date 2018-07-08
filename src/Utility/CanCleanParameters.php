@@ -49,10 +49,14 @@ trait CanCleanParameters
                     $testFailed = array_map(
 
                         function ($values) {
-                            return (int) (boolean) array_sum(array_map(function ($swap) {
+                            return (int) (boolean) array_sum(
+                                array_map(
+                                    function ($swap) {
 
-                                return (int) is_null($this->accessPropertyByKey($swap));
-                            }, $values));
+                                        return (int) is_null($this->accessPropertyByKey($swap));
+                                    }, $values
+                                )
+                            );
                         },
                         $this->parametersSwapable[$key]
                     );
@@ -63,9 +67,11 @@ trait CanCleanParameters
                     // on how o pass the test along with the set of possible swaps.
 
                     if (array_sum($testFailed) == count($this->parametersSwapable[$key])) {
-                        $swaps = array_map(function ($swap) {
-                            return implode(' & ', $swap);
-                        }, $this->parametersSwapable[$key]);
+                        $swaps = array_map(
+                            function ($swap) {
+                                return implode(' & ', $swap);
+                            }, $this->parametersSwapable[$key]
+                        );
 
                         $keys .= '[' . $key . ' or ' . implode(' or ', $swaps) . '], ';
                     }

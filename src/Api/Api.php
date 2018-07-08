@@ -29,6 +29,7 @@ use Qodehub\Bitgo\Utility\BitgoHandler;
  * This class in responsible for making and executing the calls
  * to the Bitgo Server.
  *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.CamelCaseMethodName)
  */
 abstract class Api implements ApiInterface

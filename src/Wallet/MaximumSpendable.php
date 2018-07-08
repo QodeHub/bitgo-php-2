@@ -27,8 +27,12 @@ use Qodehub\Bitgo\Wallet;
  * This class requires that a walletId be present. Examples are attaches
  *
  * @example Btc::btc($config)->wallet($waletId)->maximumSpendable()->get();
+ *
+ * @SuppressWarnings(PHPMD.LongVariable)
+ * @SuppressWarnings(PHPMD.LongMethodName)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class MaximumSpendable extends Api
+class MaximumSpendable extends Wallet
 {
     use WalletTrait;
     use MassAssignable;
@@ -57,42 +61,49 @@ class MaximumSpendable extends Api
 
     /**
      * Max number of unspents to use (if less than 200)
+     *
      * @var int
      */
     protected $limit;
 
     /**
      * Ignore unspents smaller than this amount of satoshis
+     *
      * @var int
      */
     protected $minValue;
 
     /**
      * Ignore unspents larger than this amount of satoshis
+     *
      * @var int
      */
     protected $maxValue;
 
     /**
      * Minimum block height of unspents to fetch
+     *
      * @var int
      */
     protected $minHeight;
 
     /**
      * The desired fee rate for the transaction in satoshis/kB
+     *
      * @var int
      */
     protected $feeRate;
 
     /**
      * The required number of confirmations for each non-change unspent
+     *
      * @var int
      */
     protected $minConfirms;
 
     /**
      * Apply the required confirmations set in minConfirms for change outputs
+     *
      * @var boolean
      */
     protected $enforceMinConfirmsForChange;

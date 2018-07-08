@@ -110,7 +110,7 @@ class SendTransaction extends SignTransaction
     /**
      * A convinievt method for setting the half-signed transaction
      *
-     * @param Object An object representing the half signed.
+     * @param Object $halfSigned An object representing the half signed.
      * @return self
      */
     public function halfSigned(Object $halfSigned)
@@ -121,7 +121,7 @@ class SendTransaction extends SignTransaction
     /**
      * A convinievt method for setting the transactoon-hex
      *
-     * @param Object An object representing the half signed.
+     * @param  Object $txHex An object representing the half signed.
      * @return self
      */
     public function txHex(string $txHex)
@@ -132,7 +132,7 @@ class SendTransaction extends SignTransaction
     /**
      * A convinievt method for setting the otp
      *
-     * @param string A string representing the half signed.
+     * @param  string $txHex A string representing the half signed.
      * @return self
      */
     public function otp(string $txHex)

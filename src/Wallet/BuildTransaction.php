@@ -188,7 +188,7 @@ class BuildTransaction extends SendCoins
     /**
      * Get a single recipient
      *
-     * @param int $index The index of the recipient in the array.
+     * @param  int $index The index of the recipient in the array.
      * @return array A single recipient with address and amount.
      */
     public function getRecipient(int $index = 0)
@@ -213,31 +213,35 @@ class BuildTransaction extends SendCoins
     /**
      * Validate recipient information passed in.
      *
-     * @param  array  $recipient Recipient array containing amount and address.
+     * @param  array $recipient Recipient array containing amount and address.
      * @return void
      *
      * @throws InvalidRequestException
      */
     private function validateRecipient(array $recipient)
     {
-        $result = filter_var_array($recipient, [
+        $result = filter_var_array(
+            $recipient, [
             'amount' => FILTER_VALIDATE_FLOAT,
             'address' => array(
                 'filter' => FILTER_VALIDATE_REGEXP | FILTER_SANITIZE_STRING,
                 'options' => array('regexp' => '/^\w$/'),
             ),
-        ]);
+            ]
+        );
 
         if ($result['address'] && $result['amount']) {
             return $result;
         }
 
-        throw new InvalidRequestException("
+        throw new InvalidRequestException(
+            "
             Invalid recipient information.
             address and amount are required for each recipient information.
             address: '" . $result['address'] . "',
             amount: '" . $result['amount'] . "'
-        ");
+        "
+        );
     }
 
     /**
@@ -282,6 +286,7 @@ class BuildTransaction extends SendCoins
 
     /**
      * Test that the recipients are valid.
+     *
      * @return boolean
      */
     private function testRecipients()
