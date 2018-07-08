@@ -145,7 +145,7 @@ class SignTransaction extends SendCoins
      * @param  object $txPrebuild A valid txPrebuild object
      * @return self
      */
-    public function txPrebuild(object $txPrebuild)
+    public function txPrebuild($txPrebuild)
     {
         return $this->setTxPrebuild($txPrebuild);
     }
