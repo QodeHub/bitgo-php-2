@@ -220,6 +220,17 @@ interface WalletInterface extends ApiInterface
     public function sendTransaction($attributes = []);
 
     /**
+     * This function will place a magic call to the MaximumSpendable
+     * class, giving all available methods on for chaining.
+     *
+     * @param  array|null $attributes This will accept an
+     *                                array of arguements
+     *                                for configuration.
+     * @return MaximumSpendable
+     */
+    public function maximumSpendable($attributes = []);
+
+    /**
      * This function will place a magic call to the UpdateWallet
      * class, giving all available methods on for chaining.
      *
