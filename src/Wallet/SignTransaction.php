@@ -123,7 +123,7 @@ class SignTransaction extends SendCoins
      * @param  Object $key A valid encrypted keychain object
      * @return self
      */
-    public function key(Object $key)
+    public function key($key)
     {
         return $this->keychain($key);
     }
@@ -134,7 +134,7 @@ class SignTransaction extends SendCoins
      * @param  Object $key A valid encrypted keychain object
      * @return self
      */
-    public function keychain(Object $key)
+    public function keychain($key)
     {
         return $this->setKey($key);
     }
@@ -163,7 +163,7 @@ class SignTransaction extends SendCoins
      *
      * @return self
      */
-    public function setTxPrebuild(Object $txPrebuild)
+    public function setTxPrebuild($txPrebuild)
     {
         $this->txPrebuild = $txPrebuild;
 
@@ -183,7 +183,7 @@ class SignTransaction extends SendCoins
      *
      * @return self
      */
-    public function setKeychain(Object $keychain)
+    public function setKeychain($keychain)
     {
         $this->keychain = $keychain;
 
@@ -203,7 +203,7 @@ class SignTransaction extends SendCoins
      *
      * @return self
      */
-    public function setKey(Object $key)
+    public function setKey($key)
     {
         $this->key = $key;
 
