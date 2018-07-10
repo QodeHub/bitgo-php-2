@@ -111,7 +111,7 @@ class BuildTransaction extends SendCoins
      */
     public function amount($amount, int $index = 0)
     {
-        $this->recipients[$index]['amount'] = $amount;
+        $this->recipients[$index]['amount'] = ((string) $amount) ?: null;
 
         return $this;
     }
@@ -166,7 +166,10 @@ class BuildTransaction extends SendCoins
      */
     public function addRecipient(string $address, int $amount)
     {
-        $this->validateRecipient($recipient = compact('address', 'amount'));
+        $this->validateRecipient($recipient = [
+            'address' => $address,
+            'amount' => ((string) $amount) ?: null,
+        ]);
 
         array_push($this->recipients, $recipient);
 
@@ -221,12 +224,16 @@ class BuildTransaction extends SendCoins
     private function validateRecipient(array $recipient)
     {
         $result = filter_var_array(
-            $recipient, [
-            'amount' => FILTER_VALIDATE_FLOAT,
-            'address' => array(
-                'filter' => FILTER_VALIDATE_REGEXP | FILTER_SANITIZE_STRING,
-                'options' => array('regexp' => '/^\w$/'),
-            ),
+            $recipient,
+            [
+                'amount' => array(
+                    'filter' => FILTER_VALIDATE_REGEXP | FILTER_SANITIZE_STRING,
+                    'options' => array('regexp' => '/^\w$/'),
+                ),
+                'address' => array(
+                    'filter' => FILTER_VALIDATE_REGEXP | FILTER_SANITIZE_STRING,
+                    'options' => array('regexp' => '/^\w$/'),
+                ),
             ]
         );
 
