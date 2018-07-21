@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 use Qodehub\Bitgo\Api\Api;
 use Qodehub\Bitgo\Bitgo;
 use Qodehub\Bitgo\Config;
+use Qodehub\Bitgo\Rates;
 use Qodehub\Bitgo\Wallet;
 use Qodehub\Bitgo\Wallet\CreateWallet;
 
@@ -182,6 +183,14 @@ class Test extends TestCase
         $instance = Bitgo::createWallet();
 
         $this->assertInstanceOf(CreateWallet::class, $instance);
+    }
+
+    /** @test */
+    public function a_static_call_to_rates_returns_a_rates_instance()
+    {
+        $instance = Bitgo::rates();
+
+        $this->assertInstanceOf(Rates::class, $instance);
     }
 
     /** @test */

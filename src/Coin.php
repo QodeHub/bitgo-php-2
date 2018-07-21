@@ -139,7 +139,7 @@ trait Coin
         /**
          * Check for bridge classes
          */
-        if (in_array($method, ['wallet', 'createWallet', 'utilities'])) {
+        if (in_array($method, ['wallet', 'createWallet', 'utilities', 'rates'])) {
 
             /**
              * Pass the call on to an instnace of the implementing class

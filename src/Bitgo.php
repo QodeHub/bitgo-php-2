@@ -191,7 +191,7 @@ class Bitgo implements ConfigInterface
          *
          * I hope you get the basic idea! ;-)
          */
-        if (in_array($method, ['wallet', 'createWallet', 'utilities'])) {
+        if (in_array($method, ['wallet', 'createWallet', 'utilities', 'rates'])) {
 
             /**
              * Append a capitalized name of the method
