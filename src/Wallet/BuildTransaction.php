@@ -211,6 +211,8 @@ class BuildTransaction extends SendCoins
         }
 
         $this->recipients = $recipients;
+
+        return $this;
     }
 
     /**
@@ -296,7 +298,7 @@ class BuildTransaction extends SendCoins
      *
      * @return boolean
      */
-    private function testRecipients()
+    protected function testRecipients()
     {
         if ((bool) count($this->recipients)) {
             foreach ($this->recipients as $recipient) {
