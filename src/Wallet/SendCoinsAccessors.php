@@ -150,6 +150,26 @@ trait SendCoinsAccessors
     }
 
     /**
+     * @return integer
+     */
+    public function getMaxFeeRate()
+    {
+        return $this->maxFeeRate;
+    }
+
+    /**
+     * @param integer $maxFeeRate
+     *
+     * @return self
+     */
+    public function setMaxFeeRate($maxFeeRate)
+    {
+        $this->maxFeeRate = $maxFeeRate;
+
+        return $this;
+    }
+
+    /**
      * @return boolean
      */
     public function getNoSplitChange()
