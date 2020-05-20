@@ -13,8 +13,8 @@
             "Qodehub\\Bitgo\\" : "src/"
         }
     },
-    "require": {
-        "php": ">=5.4.0",
+    "require": {        
+        "php": "^7.1.3",
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/support": "~5.0"
     },
